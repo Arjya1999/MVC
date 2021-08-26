@@ -6,16 +6,14 @@ Created on Tue Aug 24 09:18:35 2021
 """
 
 from flask import Flask
-from flask_restx import Resource,Api
-from controller import HelloWorld
+from flask_restx import Api
+from controller import *
 
 app=Flask('__name__')
 
 api=Api(app)
 
-#api.route('/hello',methods=['GET'])(HelloWorld().get())
-api.add_resource(HelloWorld(Resource).get(), '/get')
-api.add_resource(HelloWorld(Resource).post(), '/post')
+api.add_resource(HelloWorld, '/hello')
 
 if __name__ == '__main__':
     app.run(debug=True)
