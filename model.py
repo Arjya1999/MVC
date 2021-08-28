@@ -2,11 +2,9 @@ import json
 
 class DataHandling:
     global data
-    # Opening JSON file
+    
     f = open('sample.json',)
-          
-    # returns JSON object as 
-    # a dictionary
+    
     data = json.load(f)
     
     def display(self):
@@ -21,7 +19,6 @@ class DataHandling:
         data[str(len(data)+1)]=dataset
         json_object = json.dumps(data)
       
-        # Writing to sample.json
         with open("sample.json", "w") as outfile:
             outfile.write(json_object)
             
@@ -31,11 +28,10 @@ class DataHandling:
         del data[ids]
         json_object = json.dumps(data)
       
-        # Writing to sample.json
         with open("sample.json", "w") as outfile:
             outfile.write(json_object)
             
-        return "The information of row "+ids+" is deleted"
+        return {"The information of row "+ids+" is deleted"}
     
     def update(self,ids,name,age,gender):
         d1={}
@@ -52,4 +48,4 @@ class DataHandling:
         with open("sample.json", "w") as outfile:
             outfile.write(json_object)
             
-        return "The dictionary was updated"
+        return {"The dictionary was updated"}
