@@ -31,7 +31,7 @@ class DataHandling:
         with open("sample.json", "w") as outfile:
             outfile.write(json_object)
             
-        return {"The information of row "+ids+" is deleted"}
+        return {"msg":"The information of row "+ids+" is deleted"}
     
     def update(self,ids,name,age,gender):
         d1={}
@@ -48,4 +48,4 @@ class DataHandling:
         with open("sample.json", "w") as outfile:
             outfile.write(json_object)
             
-        return {"The dictionary was updated"}
+        return {"msg":"The dictionary was updated"}
