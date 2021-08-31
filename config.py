@@ -1,0 +1,2 @@
+class ConfigProduction():
+    DEBUG=True
