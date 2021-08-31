@@ -1,51 +1,54 @@
 import json
+from config import ConfigProduction
 
 class DataHandling:
-    global data
     
-    f = open('sample.json',)
-    
-    data = json.load(f)
+    def __init__(self):
+        f = open('sample.json',)
+        
+        self.data = json.load(f)
     
     def display(self):
         
-        return data
+        return self.data
     
     def display_by_id(self,id):
         
-        return data[id]
+        return self.data[id]
     
     def add(self,dataset):
-        data[str(len(data)+1)]=dataset
-        json_object = json.dumps(data)
+        self.data[str(len(self.data)+1)]=dataset
+        json_object = json.dumps(self.data)
       
-        with open("sample.json", "w") as outfile:
+        with open(ConfigProduction["db_name"], "w") as outfile:
             outfile.write(json_object)
             
-        return data
+        return self.data
     
     def delete(self,ids):
-        del data[ids]
-        json_object = json.dumps(data)
+        del self.data[ids]
+        json_object = json.dumps(self.data)
       
         with open("sample.json", "w") as outfile:
             outfile.write(json_object)
             
-        return {"msg":"The information of row "+ids+" is deleted"}
+        return {"message":"The information of row "+ids+" is deleted"}
     
     def update(self,ids,name,age,gender):
         d1={}
+        
         if name!=None:
             d1.update({"name":name})
         if age!=None:
             d1.update({"Age":age})
         if gender!=None:
             d1.update({"gender":gender})
-        data.update({ids:d1})
-        json_object = json.dumps(data)
+        
+        self.data.update({ids:d1})
+        json_object = json.dumps(self.data)
       
         # Writing to sample.json
         with open("sample.json", "w") as outfile:
             outfile.write(json_object)
             
-        return {"msg":"The dictionary was updated"}
+        return {"message":"The dictionary was updated"}
