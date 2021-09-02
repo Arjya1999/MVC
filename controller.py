@@ -12,7 +12,7 @@ class RecordHandling(Resource,DataHandling):
         try:
             ids = request.get_json()
             
-            if ids== None:
+            if ids == None:
                 display_all_records= self.display()
                 return getCustomResponse(success=True, message="OK, Returning data from get method", data=display_all_records, status_code=200)
             else:

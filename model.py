@@ -4,7 +4,7 @@ from config import ConfigProduction
 class DataHandling:
     
     def __init__(self):
-        f = open('sample.json',)
+        f = open(ConfigProduction["db_name"],)
         
         self.data = json.load(f)
     
