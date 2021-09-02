@@ -4,23 +4,20 @@ from config import ConfigProduction
 class DataHandling:
     
     def __init__(self):
-        f = open(ConfigProduction["db_name"],)
-        
+        f = open('sample.json',)
         self.data = json.load(f)
     
     def display(self):
-        
         return self.data
     
-    def display_by_id(self,id):
-        
+    def display_record_by_id(self, id):
         return self.data[id]
     
     def add(self,dataset):
         self.data[str(len(self.data)+1)]=dataset
         json_object = json.dumps(self.data)
       
-        with open(ConfigProduction["db_name"], "w") as outfile:
+        with open('sample.json', "w") as outfile:
             outfile.write(json_object)
             
         return self.data

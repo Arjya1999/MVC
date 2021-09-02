@@ -1,7 +1,7 @@
 
 from flask import Flask
 from flask_restx import Api
-from controller import *
+from controller import RecordHandling
 from config import ConfigProduction
 
 app=Flask('__name__')
