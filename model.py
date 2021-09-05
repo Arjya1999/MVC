@@ -59,7 +59,6 @@ class HistogramHandling:
     def histogram(self,column_name):
         
         data= self.dataset[column_name].value_counts()
-        name = self.dataset.Position.unique()
         data = self.dataset['Position'].value_counts()
         y_axis= self.dataset['Position'].value_counts().tolist()
         x_axis = data.index.tolist()
