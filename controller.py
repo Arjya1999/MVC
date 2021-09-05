@@ -5,18 +5,26 @@ from helper import *
 
 var = DataHandling()
 
+# dynamic function calling
+dynamic = {"display":var.display,"displaybyid":var.display_record_by_id}
+
 class RecordHandling(Resource):
-    
+
     def get(self):
         try:
+            name="display"
             ids = request.get_json()
             
             if ids== None:
-                display_all_records = var.display()
-                return getCustomResponse(success=True, message="OK, Returning data from RecordHandling's get method", data=display_all_records, status_code=200)
+                func_name=dynamic[name]
+                display_all_records = func_name()
+                return getCustomResponse(success=True, message="OK, Returning data from RecordHandling's get method", data=display_all_records, status_code=200)            
             else:
-                return getCustomResponse(success=True, message="OK, Returning data from RecordHandling's get method", data=var.display_record_by_id(ids['ids']), status_code=200)
-
+                name=name+"byid"
+                func_name=dynamic[name]
+                display_by_id = func_name(ids['ids'])
+                return getCustomResponse(success=True, message="OK, Returning data from RecordHandling's get method", data= display_by_id, status_code=200)
+        
         except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from RecordHandling's get method", data=None, status_code=400)
 
