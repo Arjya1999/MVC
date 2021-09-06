@@ -2,6 +2,7 @@ from flask import Flask, jsonify,request
 from flask_restx import Resource
 from model import *
 from helper import *
+from data_visualization import *
 
 var = DataHandling()
 
@@ -61,16 +62,24 @@ class RecordHandling(Resource):
         except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from RecordHandling's put method", data=None, status_code=400)
 
-class_object = HistogramHandling()
+class_object = DataVisualization()
 
-class Histogram(Resource):
+class Visualization(Resource):
     
     def get(self):
         try:
-            column_name = request.get_json()
-            
-            data_histogram = class_object.histogram(column_name['column name'])
-            return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data=data_histogram, status_code=200)
+            data_from_json = request.get_json()
+            graph_name= data_from_json["graph name"].lower()
 
+            if graph_name == "histogram":
+                data_histogram = class_object.histogram(data_from_json['column name'])
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data=data_histogram, status_code=200)
+            elif graph_name == "line chart":
+                column_name1 = data_from_json['column name 1']
+                column_name2 = data_from_json['column name 2']
+                data_linechart = class_object.linechart(column_name1,column_name2)
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Visualization's get method", data=data_linechart, status_code=200)
         except:
-            return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from Histogram's get method", data=None, status_code=400)
+            return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from Visualization's get method", data=None, status_code=400)

@@ -10,7 +10,7 @@ app.config.from_object('config.ConfigProduction')
 api=Api(app)
 
 api.add_resource(RecordHandling, '/records')
-api.add_resource(Histogram, '/histogram')
+api.add_resource(Visualization, '/visualization')
 
 if __name__ == '__main__':
     app.run(debug=app.config["DEBUG"])
