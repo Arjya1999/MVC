@@ -72,14 +72,74 @@ class Visualization(Resource):
             graph_name= data_from_json["graph name"].lower()
 
             if graph_name == "histogram":
-                data_histogram = class_object.histogram(data_from_json['column name'])
+                
+                column_name= data_from_json['column name']
+                data_histogram = class_object.histogram(column_name)
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data=data_histogram, status_code=200)
+            
             elif graph_name == "line chart":
+                
                 column_name1 = data_from_json['column name 1']
                 column_name2 = data_from_json['column name 2']
                 data_linechart = class_object.linechart(column_name1,column_name2)
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Visualization's get method", data=data_linechart, status_code=200)
+            
+            elif graph_name == "scatter graph":
+                
+                column_name1 = data_from_json['column name 1']
+                column_name2 = data_from_json['column name 2']
+                data_scatter = class_object.scattergraph(column_name1,column_name2)
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Visualization's get method", data=data_scatter, status_code=200)
+            
+            elif graph_name == "graph for column relation with target variable":
+                
+                column_name= data_from_json['column name']
+                data_correlation_with_target_variable = class_object.graph_for_column_relation_with_target_variable(column_name)
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_correlation_with_target_variable, status_code=200)
+            
+            elif graph_name == "data completeness":
+                
+                data_completeness = class_object.data_completeness()
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_completeness, status_code=200)
+            
+            elif graph_name == "bar graph":
+                
+                column_name= data_from_json['column name']
+                data_bar_graph = class_object.Bargraph(column_name)
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_bar_graph, status_code=200)
+            
+            elif graph_name == "heatmap full dataset":
+                
+                data_heatmap_full_dataset = class_object.heatmap_full_dataset()
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_heatmap_full_dataset, status_code=200)
+            
+            elif graph_name == "graph distribution":
+                
+                column_name= data_from_json['column name']
+                data_graph_distribution = class_object.graph_distribution(column_name)
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_graph_distribution, status_code=200)
+            
+            elif graph_name == "skewness":
+                
+                column_name= data_from_json['column name']
+                data_skewness = class_object.skewness(column_name)
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_skewness, status_code=200)
+            
+            elif graph_name == "boxplot":
+                
+                column_name= data_from_json['column name']
+                data_boxplot = class_object.boxplot(column_name)
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_boxplot, status_code=200)
+            
         except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from Visualization's get method", data=None, status_code=400)
