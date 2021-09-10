@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Sep  6 11:50:46 2021
-
-@author: ARJYA
-"""
 import pandas as pd
 import seaborn as sns
 
