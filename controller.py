@@ -62,13 +62,10 @@ class RecordHandling(Resource):
         except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from RecordHandling's put method", data=None, status_code=400)
 
-#class_object = DataVisualization()
+class_object = DataVisualization()
 
 class Visualization(Resource,DataVisualization):
-    
-    def __init__(self):
-        super(DataVisualization, self).__init__()
-        
+   
     def get(self):
         try:
             data_from_json = request.get_json()
@@ -80,7 +77,7 @@ class Visualization(Resource,DataVisualization):
                 pass
 
             if graph_name == "histogram":
-                data_histogram = super(DataVisualization,self).histogram(column_name1)
+                data_histogram = class_object.histogram(column_name1)
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data=data_histogram, status_code=200)
             
