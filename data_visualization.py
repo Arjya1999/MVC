@@ -1,45 +1,45 @@
 import pandas as pd
 import seaborn as sns
+from config import ConfigProduction
 
 class DataVisualization:
         
     def __init__(self):
-        self.dataset = pd.read_csv("mlb_players.csv")
+        config_instance = ConfigProduction()
+        self.dataset = pd.read_csv(config_instance.dataset)
     
     def histogram(self,column_name):
         
-        data= self.dataset[column_name].value_counts()
-        y_axis= self.dataset[column_name].value_counts().tolist()
-        x_axis = data.index.tolist()
+        data= self.dataset[column_name].tolist()
         
-        dic={"x_axis":x_axis,"y_axis":y_axis}
-    
+        dic={"data":data}
+
         return dic
     
     def linechart(self,column_name1,column_name2):
         
-        data_1 = self.dataset[column_name1].tolist()
-        data_2 = self.dataset[column_name2].tolist()
+        x_axis = self.dataset[column_name1].tolist()
+        y_axis = self.dataset[column_name2].tolist()
         
-        dic={"x_axis":data_1,"y_axis":data_2}
+        dic={"x_axis":x_axis,"y_axis":y_axis}
 
         return dic
     
     def scattergraph(self,column_name1,column_name2):
         
-        data_1 = self.dataset[column_name1].tolist()
-        data_2 = self.dataset[column_name2].tolist()
+        x_axis = self.dataset[column_name1].tolist()
+        y_axis = self.dataset[column_name2].tolist()
         
-        dic={"x_axis":data_1,"y_axis":data_2}
+        dic={"x_axis":x_axis,"y_axis":y_axis}
 
         return dic
     
     def graph_for_column_relation_with_target_variable(self,column_name):
         
-        y = self.dataset.corrwith(self.dataset[column_name]).tolist()
-        x = self.dataset.corrwith(self.dataset[column_name]).index.tolist()
+        y_axis = self.dataset.corrwith(self.dataset[column_name]).tolist()
+        x_axis = self.dataset.corrwith(self.dataset[column_name]).index.tolist()
             
-        dic={"x_axis":x,"y_axis":y}
+        dic={"x_axis":x_axis,"y_axis":y_axis}
 
         return dic
     
@@ -50,10 +50,10 @@ class DataVisualization:
         
         null_data=length-null_data
         
-        x=null_data.index.tolist()
-        y=null_data.tolist()
+        x_axis =null_data.index.tolist()
+        y_axis =null_data.tolist()
         
-        dic={"x_axis":x,"y_axis":y}
+        dic={"x_axis":x_axis,"y_axis":y_axis}
 
         return dic
     
@@ -70,38 +70,29 @@ class DataVisualization:
     def heatmap_full_dataset(self):
         
         corr = self.dataset.corr()
-        x = corr.columns.tolist()
-        y = corr.values.tolist()
+        x_axis = corr.columns.tolist()
+        y_axis = corr.values.tolist()
         
-        dic={"x_axis":x,"y_axis":y}
+        dic={"x_axis":x_axis,"y_axis":y_axis}
     
         return dic
     
     def graph_distribution(self,column_name):
         
-        data = sns.distplot(self.dataset[column_name]).get_lines()[0].get_data()
+        data= self.dataset[column_name].tolist()
         
-        x_axis= data[0].tolist()
-        y_axis= data[1].tolist()
-        
-        dic={"x_axis":x_axis,"y_axis":y_axis}
-    
+        dic={"data":data}
+
         return dic
     
-    def skewness(self,column_name):
+    def pie_chart(self,column_name):
+        temp=[]
+        data = self.dataset[column_name].value_counts().tolist()
+        name= self.dataset[column_name].value_counts().index.tolist()
         
-        data = sns.distplot(self.dataset[column_name]).get_lines()[0].get_data()
+        for i in range(len(data)):
+            d= {"name":name[i],"y":data[i]}
+            temp.append(d)
         
-        x_axis= data[0].tolist()
-        y_axis= data[1].tolist()
-        
-        dic={"x_axis":x_axis,"y_axis":y_axis}
-    
-        return dic
-    
-    def boxplot(self,column_name):
-        
-        ax = sns.boxplot(data= self.dataset[column_name])
-        
-        pass
+        return temp
     
