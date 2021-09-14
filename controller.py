@@ -62,42 +62,39 @@ class RecordHandling(Resource):
         except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from RecordHandling's put method", data=None, status_code=400)
 
-class_object = DataVisualization()
+#class_object = DataVisualization()
 
-class Visualization(Resource):
+class Visualization(Resource,DataVisualization):
     
+    def __init__(self):
+        super(DataVisualization, self).__init__()
+        
     def get(self):
         try:
             data_from_json = request.get_json()
             graph_name= data_from_json["graph name"].lower()
+            
             try:
                 column_name1 = data_from_json['column name 1']
             except:
                 pass
 
             if graph_name == "histogram":
-            
-                data_histogram = class_object.histogram(column_name1)
+                data_histogram = super(DataVisualization,self).histogram(column_name1)
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data=data_histogram, status_code=200)
+            
+            elif graph_name == "pie chart":
+                
+                data_pie = class_object.pie_chart(column_name1)
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_pie, status_code=200)
             
             elif graph_name == "graph distribution":
             
                 data_graph_distribution = class_object.graph_distribution(column_name1)
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_graph_distribution, status_code=200)
-            
-            elif graph_name == "skewness":
-                
-                data_skewness = class_object.skewness(column_name1)
-                
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_skewness, status_code=200)
-            
-            elif graph_name == "boxplot":
-                
-                data_boxplot = class_object.boxplot(column_name1)
-                
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_boxplot, status_code=200)
             
             elif graph_name == "graph for column relation with target variable":
             
@@ -130,7 +127,6 @@ class Visualization(Resource):
                 data_completeness = class_object.data_completeness()
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_completeness, status_code=200)
-            
             
             elif graph_name == "heatmap full dataset":
                 
