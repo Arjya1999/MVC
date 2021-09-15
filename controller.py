@@ -2,7 +2,7 @@ from flask import Flask, jsonify,request
 from flask_restx import Resource
 from model import *
 from helper import *
-from data_visualization import *
+from data_visualization import DataVisualization
 
 var = DataHandling()
 
@@ -64,8 +64,8 @@ class RecordHandling(Resource):
 
 class_object = DataVisualization()
 
-class Visualization(Resource,DataVisualization):
-   
+class Visualization(Resource):
+    
     def get(self):
         try:
             data_from_json = request.get_json()

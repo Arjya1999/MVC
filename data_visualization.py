@@ -7,7 +7,7 @@ class DataVisualization:
     def __init__(self):
         config_instance = ConfigProduction()
         self.dataset = pd.read_csv(config_instance.dataset)
-    
+        
     def histogram(self,column_name):
         
         data= self.dataset[column_name].tolist()
@@ -15,7 +15,15 @@ class DataVisualization:
         dic={"data":data}
 
         return dic
-    
+
+    def boxplot(self,column_name):
+        
+        data= self.dataset[column_name].tolist()
+        
+        dic={"data":data}
+
+        return dic
+     
     def linechart(self,column_name1,column_name2):
         
         x_axis = self.dataset[column_name1].tolist()
@@ -29,8 +37,12 @@ class DataVisualization:
         
         x_axis = self.dataset[column_name1].tolist()
         y_axis = self.dataset[column_name2].tolist()
+        data=[]
         
-        dic={"x_axis":x_axis,"y_axis":y_axis}
+        for i in range(len(x_axis)):
+            data.append([x_axis[i],y_axis[i]])
+
+        dic={"data":data}
 
         return dic
     

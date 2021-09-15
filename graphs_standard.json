@@ -1,0 +1,37 @@
+{
+  "chart": {
+    "type": "column"
+  },
+  "title": {
+    "text": ""
+  },
+  "xAxis": {
+    "categories": []
+  },
+  "yAxis": {
+    "min": 0,
+    "title": {
+      "text": ""
+    }
+  },
+  "legend": {
+    "reversed": true
+  },
+  "plotOptions": {
+    "series": {
+      "stacking": "normal"
+    }
+  },
+  "credits": {
+    "enabled": false
+  },
+  "exporting": {
+    "enabled": false
+  },
+  "series": [
+    {
+      "name": "",
+      "data": []
+    }
+  ]
+}
