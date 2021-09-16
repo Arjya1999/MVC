@@ -19,10 +19,8 @@ class DataVisualization:
     def boxplot(self,column_name):
         
         data= self.dataset[column_name].tolist()
-        
-        dic={"data":data}
-
-        return dic
+                
+        return {'x_data':data,'y_data':[],  'type1': 'scatter', 'type2': 'histogram'}
      
     def linechart(self,column_name1,column_name2):
         
