@@ -1,50 +1,61 @@
-var data = [];
-
-Highcharts.chart('container', {
-    title: {
-        text: ''
+{
+  "title": {
+    "text": "Highcharts Histogram"
+  },
+  "xAxis": [
+    {
+      "title": {
+        "text": "Data"
+      },
+      "alignTicks": false
     },
-
-    xAxis: [{
-        title: { text: '' },
-        alignTicks: false
-    }, {
-        title: { text: '' },
-        alignTicks: false,
-        opposite: true
-    }],
-
-    yAxis: [{
-        title: { text: '' }
-    }, {
-        title: { text: '' },
-        opposite: true
-    }],
-
-    plotOptions: {
-        histogram: {
-            accessibility: {
-                point: {
-                    valueDescriptionFormat: '{index}. {point.x:.3f} to {point.x2:.3f}, {point.y}.'
-                }
-            }
-        }
+    {
+      "title": {
+        "text": "Histogram"
+      },
+      "alignTicks": false,
+      "opposite": true
+    }
+  ],
+  "yAxis": [
+    {
+      "title": {
+        "text": "Data"
+      }
     },
-
-    series: [{
-        name: 'Histogram',
-        type: 'histogram',
-        xAxis: 1,
-        yAxis: 1,
-        baseSeries: 's1',
-        zIndex: -1
-    }, {
-        name: 'Data',
-        type: 'scatter',
-        data: data,
-        id: 's1',
-        marker: {
-            radius: 1.5
+    {
+      "title": {
+        "text": "Histogram"
+      },
+      "opposite": true
+    }
+  ],
+  "plotOptions": {
+    "histogram": {
+      "accessibility": {
+        "point": {
+          "valueDescriptionFormat": "{index}. {point.x:.3f} to {point.x2:.3f}, {point.y}."
         }
-    }]
-});
+      }
+    }
+  },
+  "series": [
+    {
+      "name": "Histogram",
+      "type": "histogram",
+      "xAxis": 1,
+      "yAxis": 1,
+      "baseSeries": "s1",
+      "zIndex": -1
+    },
+    {
+      "name": "Data",
+      "type": "scatter",
+      "data": [],
+      "id": "s1",
+      "marker": {
+        "radius": 1.5
+      }
+    }
+  ]
+}
