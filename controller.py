@@ -77,12 +77,16 @@ class Visualization(Resource):
 
             if graph_name == "histogram":
                 data_histogram = class_object.histogram(column_name1)
-                
+                   with open('graphs_histogram.json') as f:
+                        graph_template_data_histogram = json.load(f)
+
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data=data_histogram, status_code=200)
             
             elif graph_name == "pie chart":
                 
                 data_pie = class_object.pie_chart(column_name1)
+                with open('graphs_pie_chart.json') as f:
+                        graph_template_data_pie_chart = json.load(f)
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_pie, status_code=200)
             
