@@ -1,0 +1,18 @@
+{
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ""
+    },
+    xAxis: {
+        categories:[]
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: "",
+        data: []
+    }]
+}

@@ -1,0 +1,15 @@
+Graphs for Column relation with Target variable - bar graph
+Heatmap of correlation - full dataset - top 5 features with target variable - ml
+Graph for Distribution of columns
+Target variable classes bar graph - nlp 
+Word tree diagram  - nlp
+Box plot - one column - info about outliers - ml
+Histogram - one column - bin with highest count - ml
+Bar graph - one column - ratio and count - ml
+Skewness/displot graph - one column - skewness type and magnitude - ml
+Heatmap of correlation - full dataset - top 5 features with target variable - ml
+Scatter graph - two column - relationship - ml
+Line chart - two column - relationship - ml
+Data distributions graphs 
+Feature importance vertical bar graph
+Data Completeness - bar graph
