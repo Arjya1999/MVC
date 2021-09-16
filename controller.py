@@ -55,8 +55,7 @@ class RecordHandling(Resource):
         try:
             data_request_json = request.get_json()
         
-            results = var.update(
-                data_request_json['ids'], data_request_json['name'], data_request_json['Age'], data_request_json['gender'])
+            results = var.update(data_request_json['ids'], data_request_json['name'], data_request_json['Age'], data_request_json['gender'])
 
             return getCustomResponse(success=True, message="OK, Returning data from RecordHandling's put method", data = results['message'], status_code=200)            
         except:
@@ -67,12 +66,12 @@ class_object = DataVisualization()
 class Visualization(Resource):
     
     def get(self):
-        try:
+        #try:
             data_from_json = request.get_json()
-            graph_name= data_from_json["graph name"].lower()
+            graph_name= data_from_json["graph_name"].lower()
             
             try:
-                column_name1 = data_from_json['column name 1']
+                column_name1 = data_from_json['column_name1']
             except:
                 pass
 
@@ -107,14 +106,14 @@ class Visualization(Resource):
                         
             elif graph_name == "line chart":
                 
-                column_name2 = data_from_json['column name 2']
+                column_name2 = data_from_json['column_name2']
                 data_linechart = class_object.linechart(column_name1,column_name2)
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Visualization's get method", data=data_linechart, status_code=200)
             
             elif graph_name == "scatter graph":
                 
-                column_name2 = data_from_json['column name 2']
+                column_name2 = data_from_json['column_name2']
                 data_scatter = class_object.scattergraph(column_name1,column_name2)
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Visualization's get method", data=data_scatter, status_code=200)
@@ -131,5 +130,5 @@ class Visualization(Resource):
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_heatmap_full_dataset, status_code=200)
             
-        except:
+        #except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from Visualization's get method", data=None, status_code=400)
