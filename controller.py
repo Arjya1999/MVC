@@ -61,12 +61,12 @@ class RecordHandling(Resource):
         except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from RecordHandling's put method", data=None, status_code=400)
 
-class_object = DataVisualization()
 
 class Visualization(Resource):
     
     def get(self):
-        #try:
+        try:
+            class_object = DataVisualization()
             data_from_json = request.get_json()
             graph_name= data_from_json["graph_name"].lower()
             
@@ -77,10 +77,15 @@ class Visualization(Resource):
 
             if graph_name == "histogram":
                 data_histogram = class_object.histogram(column_name1)
-                   with open('graphs_histogram.json') as f:
-                        graph_template_data_histogram = json.load(f)
-
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data=data_histogram, status_code=200)
+                
+                with open('json files/histogram.json') as f:
+                    graph_template_histogram = json.load(f)
+                    
+                graph_template_histogram["series"][1].update({"data":data_histogram['x_data']})
+                graph_template_histogram["title"].update({"text":"Histogram of "+column_name1})
+                graph_template_histogram["xAxis"][0]['title'].update({"text":column_name1})
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= graph_template_histogram, status_code=200)
             
             elif graph_name == "pie chart":
                 
@@ -134,5 +139,5 @@ class Visualization(Resource):
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_heatmap_full_dataset, status_code=200)
             
-        #except:
+        except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from Visualization's get method", data=None, status_code=400)

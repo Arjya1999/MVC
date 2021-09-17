@@ -1,18 +1,20 @@
 {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: ""
-    },
-    xAxis: {
-        categories:[]
-    },
-    credits: {
-        enabled: false
-    },
-    series: [{
-        name: "",
-        data: []
-    }]
+  "chart": {
+    "type": "column"
+  },
+  "title": {
+    "text": "Column relation with target variable"
+  },
+  "xAxis": {
+    "categories": []
+  },
+  "credits": {
+    "enabled": false
+  },
+  "series": [
+    {
+      "name": "",
+      "data": []
+    }
+  ]
 }
