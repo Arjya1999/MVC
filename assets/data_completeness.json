@@ -1,0 +1,32 @@
+{
+    "chart": {
+        "type": "column"
+    },
+    "title": {
+        "text": "Data Completeness Graph"
+    },
+    "subtitle": {
+        "text": ""
+    },
+    "xAxis": {
+        "categories": [],
+        "crosshair": true
+    },
+    "yAxis": {
+        "min": 0,
+        "title": {
+            "text": "Number of Records"
+        }
+    },
+    "plotOptions": {
+        "column": {
+            "pointPadding": 0.2,
+            "borderWidth": 0
+        }
+    },
+    "series": [{
+        "name": "Data Completeness",
+        "data": []
+
+    }]
+}

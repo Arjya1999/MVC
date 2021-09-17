@@ -60,7 +60,7 @@ class DataVisualization:
         x_axis =null_data.index.tolist()
         y_axis =null_data.tolist()
         
-        dic={"x_axis":x_axis,"y_axis":y_axis}
+        dic={"x_data":x_axis,"y_data":y_axis}
 
         return dic
     

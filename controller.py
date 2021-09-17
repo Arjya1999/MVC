@@ -140,7 +140,13 @@ class Visualization(Resource):
                 
                 data_completeness = class_object.data_completeness()
                 
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_completeness, status_code=200)
+                with open('assets/data_completeness.json') as f:
+                    graph_template_data_competeness = json.load(f)
+                    
+                graph_template_data_competeness["series"][0].update({"data":data_completeness['y_data']})
+                graph_template_data_competeness["xAxis"].update({"categories":data_completeness['x_data']})
+                
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= graph_template_data_competeness, status_code=200)
             
             elif graph_name == "heatmap full dataset":
                 
