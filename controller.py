@@ -111,7 +111,13 @@ class Visualization(Resource):
             
                 data_bar_graph = class_object.Bargraph(column_name1)
                 
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_bar_graph, status_code=200)
+                with open('assets/categories_and_their_counts.json') as f:
+                    graph_template_value_counts = json.load(f)
+                    
+                graph_template_value_counts["series"][0].update({"data":data_bar_graph['y_data']})
+                graph_template_value_counts["xAxis"].update({"categories":data_bar_graph['x_data']})
+
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= graph_template_value_counts, status_code=200)
                         
             elif graph_name == "line chart":
                 

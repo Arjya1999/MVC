@@ -70,7 +70,7 @@ class DataVisualization:
         y_axis= self.dataset[column_name].value_counts().tolist()
         x_axis = data.index.tolist()
         
-        dic={"x_axis":x_axis,"y_axis":y_axis}
+        dic={"x_data":x_axis,"y_data":y_axis}
     
         return dic
     
