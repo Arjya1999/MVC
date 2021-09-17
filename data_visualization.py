@@ -17,7 +17,7 @@ class DataVisualization:
         
         data= self.dataset[column_name].tolist()
                 
-        dic={"data":data}
+        dic={"x_data":data,"y_data":[]}
 
         return dic
      

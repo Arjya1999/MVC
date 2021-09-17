@@ -22,24 +22,22 @@
     "yAxis": {
         "title": {
             "text": "Observations"
-        },
-        "plotLines": [{
-            "value": 932,
-            "color": "red",
-            "width": 1,
-            "label": {
-                "text": "Theoretical mean: 932",
-                "align": "center",
-                "style": {
-                    "color": "gray"
-                }
-            }
-        }]
+        }
+    
     },
 
     "series": [{
-        "name": "Observations",
+        "name": "",
         "data": []
-    }]
+    }],
+    "credits": {
+                        "enabled": false
+                    },
+                    "exporting": {
+                        "enabled": false
+                    },
+   "legend": {
+                        "reversed": true
+                    }
 
 }

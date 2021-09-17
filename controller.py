@@ -87,6 +87,19 @@ class Visualization(Resource):
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= graph_template_histogram, status_code=200)
             
+            if graph_name == "boxplot":
+                data_histogram = class_object.histogram(column_name1)
+                
+                with open('assets/boxplot.json') as f:
+                    graph_template_boxplot = json.load(f)
+                    
+                    graph_template_boxplot["series"][0].update({"data":[data_histogram['x_data']]})
+                    graph_template_boxplot["xAxis"].update({"categories":column_name1})
+                    graph_template_boxplot["xAxis"]['title'].update({"text":column_name1})
+                    graph_template_boxplot["title"].update({"text":"Boxplot of "+column_name1})
+
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= graph_template_boxplot, status_code=200)
+
             elif graph_name == "pie chart":
                 
                 data_pie_chart = class_object.pie_chart(column_name1)
@@ -119,7 +132,6 @@ class Visualization(Resource):
             elif graph_name == "bar graph":
             
                 data_bar_graph = class_object.Bargraph(column_name1)
-                
                 with open('assets/categories_and_their_counts.json') as f:
                     graph_template_value_counts = json.load(f)
                     
