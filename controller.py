@@ -65,7 +65,7 @@ class RecordHandling(Resource):
 class Visualization(Resource):
     
     def get(self):
-        try:
+        #try:
             class_object = DataVisualization()
             data_from_json = request.get_json()
             graph_name= data_from_json["graph_name"].lower()
@@ -78,7 +78,7 @@ class Visualization(Resource):
             if graph_name == "histogram":
                 data_histogram = class_object.histogram(column_name1)
                 
-                with open('json files/histogram.json') as f:
+                with open('assets/histogram.json') as f:
                     graph_template_histogram = json.load(f)
                     
                 graph_template_histogram["series"][1].update({"data":data_histogram['x_data']})
@@ -125,7 +125,16 @@ class Visualization(Resource):
                 column_name2 = data_from_json['column_name2']
                 data_scatter = class_object.scattergraph(column_name1,column_name2)
                 
-                return getCustomResponse(success=True, message="OK, Returning data from Visualization's get method", data=data_scatter, status_code=200)
+                with open('assets/scatter_plot.json') as f:
+                    graph_template_scatter_plot = json.load(f)
+                    
+                graph_template_scatter_plot["series"][0].update({"data":data_scatter['x_data']})
+                graph_template_scatter_plot["series"][0].update({"name":"Data points"})
+                graph_template_scatter_plot["title"].update({"text":"Scatter graph of "+column_name1+" and "+column_name2})
+                graph_template_scatter_plot["xAxis"]['title'].update({"text":column_name1})
+                graph_template_scatter_plot["yAxis"]['title'].update({"text":column_name2})
+
+                return getCustomResponse(success=True, message="OK, Returning data from Visualization's get method", data=graph_template_scatter_plot, status_code=200)
             
             elif graph_name == "data completeness":
                 
@@ -139,5 +148,5 @@ class Visualization(Resource):
                 
                 return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_heatmap_full_dataset, status_code=200)
             
-        except:
+        #except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from Visualization's get method", data=None, status_code=400)

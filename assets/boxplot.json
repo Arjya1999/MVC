@@ -1,0 +1,45 @@
+{
+
+    "chart": {
+        "type": "boxplot"
+    },
+
+    "title": {
+        "text": "Highcharts Box Plot"
+    },
+
+    "legend": {
+        "enabled": false
+    },
+
+    "xAxis": {
+        "categories": [],
+        "title": {
+            "text": ""
+        }
+    },
+
+    "yAxis": {
+        "title": {
+            "text": "Observations"
+        },
+        "plotLines": [{
+            "value": 932,
+            "color": "red",
+            "width": 1,
+            "label": {
+                "text": "Theoretical mean: 932",
+                "align": "center",
+                "style": {
+                    "color": "gray"
+                }
+            }
+        }]
+    },
+
+    "series": [{
+        "name": "Observations",
+        "data": []
+    }]
+
+}

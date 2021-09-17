@@ -1,0 +1,32 @@
+{
+    "chart": {
+        "type": "column"
+    },
+    "title": {
+        "text": "Value counts"
+    },
+    "subtitle": {
+        "text": ""
+    },
+    "xAxis": {
+        "categories": [],
+        "crosshair": true
+    },
+    "yAxis": {
+        "min": 0,
+        "title": {
+            "text": ""
+        }
+    },
+    "plotOptions": {
+        "column": {
+            "pointPadding": 0.2,
+            "borderWidth": 0
+        }
+    },
+    "series": [{
+        "name": "Value counts",
+        "data": []
+
+    }]
+}

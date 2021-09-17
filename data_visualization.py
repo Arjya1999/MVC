@@ -1,5 +1,4 @@
 import pandas as pd
-import seaborn as sns
 from config import ConfigProduction
 
 class DataVisualization:
@@ -40,9 +39,7 @@ class DataVisualization:
         for i in range(len(x_axis)):
             data.append([x_axis[i],y_axis[i]])
 
-        dic={"data":data}
-
-        return dic
+        return {"x_data":data, "y_data":[],'type':"scatter"}
     
     def graph_for_column_relation_with_target_variable(self,column_name):
         
