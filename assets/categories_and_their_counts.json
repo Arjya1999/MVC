@@ -28,5 +28,14 @@
         "name": "Value counts",
         "data": []
 
-    }]
+    }],
+    "credits": {
+                        "enabled": false
+                    },
+                    "exporting": {
+                        "enabled": false
+                    },
+   "legend": {
+                        "reversed": true
+                    }
 }

@@ -28,5 +28,14 @@
         "name": "Data Completeness",
         "data": []
 
-    }]
+    }],
+    "credits": {
+                        "enabled": false
+                    },
+                    "exporting": {
+                        "enabled": false
+                    },
+   "legend": {
+                        "reversed": true
+                    }
 }

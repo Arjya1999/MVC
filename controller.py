@@ -98,8 +98,14 @@ class Visualization(Resource):
             elif graph_name == "graph distribution":
             
                 data_graph_distribution = class_object.graph_distribution(column_name1)
+                with open('assets/graph_distribution.json') as f:
+                    graph_template_bell_curve = json.load(f)
+                 
+                graph_template_bell_curve["series"][1].update({"data":data_graph_distribution['x_data']})
+                graph_template_bell_curve["title"].update({"text":"Data Distribution of "+column_name1})
+                graph_template_bell_curve["xAxis"][0]['title'].update({"text":column_name1})
                 
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_graph_distribution, status_code=200)
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= graph_template_bell_curve, status_code=200)
             
             elif graph_name == "graph for column relation with target variable":
             

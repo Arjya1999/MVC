@@ -41,5 +41,14 @@
         "marker": {
             "radius": 1.5
         }
-    }]
+    }],
+    "credits": {
+                        "enabled": false
+                    },
+                    "exporting": {
+                        "enabled": false
+                    },
+   "legend": {
+                        "reversed": true
+                    }
 }
