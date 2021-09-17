@@ -30,5 +30,14 @@
             "name": "",
             "y": 0
             }]
-    }]
+    }],
+    "credits": {
+                        "enabled": false
+                    },
+                    "exporting": {
+                        "enabled": false
+                    },
+   "legend": {
+                        "reversed": true
+                    }
 }

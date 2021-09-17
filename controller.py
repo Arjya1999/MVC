@@ -89,11 +89,14 @@ class Visualization(Resource):
             
             elif graph_name == "pie chart":
                 
-                data_pie = class_object.pie_chart(column_name1)
-                with open('graphs_pie_chart.json') as f:
+                data_pie_chart = class_object.pie_chart(column_name1)
+                with open('assets/pie_chart.json') as f:
                         graph_template_data_pie_chart = json.load(f)
                 
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_pie, status_code=200)
+                graph_template_data_pie_chart["series"][0].update({"data":data_pie_chart})
+                graph_template_data_pie_chart["title"].update({"text":"Pie chart for column "+column_name1})
+
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= graph_template_data_pie_chart, status_code=200)
             
             elif graph_name == "graph distribution":
             
