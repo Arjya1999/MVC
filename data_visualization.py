@@ -46,7 +46,7 @@ class DataVisualization:
         y_axis = self.dataset.corrwith(self.dataset[column_name]).tolist()
         x_axis = self.dataset.corrwith(self.dataset[column_name]).index.tolist()
             
-        dic={"x_axis":x_axis,"y_axis":y_axis}
+        dic={"x_data":x_axis,"y_data":y_axis}
 
         return dic
     
@@ -102,4 +102,3 @@ class DataVisualization:
             temp.append(d)
         
         return temp
-    

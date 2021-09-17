@@ -126,8 +126,14 @@ class Visualization(Resource):
             elif graph_name == "graph for column relation with target variable":
             
                 data_correlation_with_target_variable = class_object.graph_for_column_relation_with_target_variable(column_name1)
+                with open('assets/column_relation_with_target_variable.json') as f:
+                    graph_template_column_relation_with_target_variable = json.load(f)
                 
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_correlation_with_target_variable, status_code=200)
+                graph_template_column_relation_with_target_variable["series"][0].update({"data":data_correlation_with_target_variable['y_data']})
+                graph_template_column_relation_with_target_variable["xAxis"].update({"categories":data_correlation_with_target_variable['x_data']})
+                graph_template_column_relation_with_target_variable["title"].update({"text":"Column relation with target variable "+column_name1})
+
+                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= graph_template_column_relation_with_target_variable, status_code=200)
             
             elif graph_name == "bar graph":
             
