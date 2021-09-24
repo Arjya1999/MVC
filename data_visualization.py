@@ -77,10 +77,15 @@ class DataVisualization:
     def heatmap_full_dataset(self):
         
         corr = self.dataset.corr()
-        x_axis = corr.columns.tolist()
-        y_axis = corr.values.tolist()
         
-        dic={"x_axis":x_axis,"y_axis":y_axis}
+    
+        x_axis = corr.columns.tolist()
+        data=[]
+        for i in range(len(corr)):
+            for j in range(len(corr)):
+                data.append([i,j,corr.iloc[j][i]])
+        
+        dic={"x_axis":x_axis,"y_axis":data}
     
         return dic
     
