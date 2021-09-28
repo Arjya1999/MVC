@@ -1,0 +1,51 @@
+{
+
+    "chart": {
+        "type": "heatmap",
+        "marginTop": 40,
+        "marginBottom": 80,
+        "plotBorderWidth": 1
+    },
+
+
+    "title": {
+        "text": "Sales per employee per weekday"
+    },
+
+    "xAxis": {
+        "categories": []
+    },
+
+    "yAxis": {
+        "categories": [],
+        "title": null,
+        "reversed": true
+    },
+
+
+    "colorAxis": {
+        "min": 0,
+        "minColor": "#FFFFFF"
+        },
+
+    "legend": {
+        "align": "right",
+        "layout": "vertical",
+        "margin": 0,
+        "verticalAlign": "top",
+        "y": 25,
+        "symbolHeight": 280
+    },
+
+ 
+    "series": [{
+        "name": "",
+        "borderWidth": 1,
+        "data": [],
+        "dataLabels": {
+            "enabled": true,
+            "color": "#000000"
+        }
+    }]
+
+}

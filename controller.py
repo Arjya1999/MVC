@@ -191,13 +191,20 @@ class Visualization(Resource):
                 graph_template_data_competeness["series"][0].update({"data":data_completeness['y_data']})
                 graph_template_data_competeness["xAxis"].update({"categories":data_completeness['x_data']})
                 
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= graph_template_data_competeness, status_code=200)
+                return getCustomResponse(success=True, message="OK, Returning data from Data completeness get method", data= graph_template_data_competeness, status_code=200)
             
             elif graph_name == "heatmap full dataset":
                 
                 data_heatmap_full_dataset = class_object.heatmap_full_dataset()
-                
-                return getCustomResponse(success=True, message="OK, Returning data from Histogram's get method", data= data_heatmap_full_dataset, status_code=200)
+                with open('assets/heatmap.json') as f:
+                    graph_template_heatmap = json.load(f)
+                    
+                graph_template_heatmap["xAxis"].update({"categories":data_heatmap_full_dataset['x_data']})
+                graph_template_heatmap["yAxis"].update({"categories":data_heatmap_full_dataset['x_data']})
+                graph_template_heatmap["series"][0].update({"data":data_heatmap_full_dataset['y_data']})
+                graph_template_heatmap["title"].update({"text":"Heatmap of full dataset"})
+
+                return getCustomResponse(success=True, message="OK, Returning data from Heatmap's get method", data= graph_template_heatmap, status_code=200)
             
         #except:
             return getCustomResponse(success=False, message="Bad Request, Some error has occured while returning data from Visualization's get method", data=None, status_code=400)

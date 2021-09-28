@@ -11,7 +11,7 @@ class DataVisualization:
         
         data= self.dataset[column_name].tolist()
         
-        return {'x_data':data,'y_data':[],  'type1': 'scatter', 'type2': 'histogram'}
+        return {'x_data':data,'y_data':[]}
     
     def stackedbar(self,column_name):
         
@@ -97,7 +97,7 @@ class DataVisualization:
             for j in range(len(corr)):
                 data.append([i,j,corr.iloc[j][i]])
         
-        dic={"x_axis":x_axis,"y_axis":data}
+        dic={"x_data":x_axis,"y_data":data}
     
         return dic
     
