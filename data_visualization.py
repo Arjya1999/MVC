@@ -13,6 +13,18 @@ class DataVisualization:
         
         return {'x_data':data,'y_data':[],  'type1': 'scatter', 'type2': 'histogram'}
     
+    def stackedbar(self,column_name):
+        
+        data= self.dataset[column_name].value_counts()
+        y_axis= self.dataset[column_name].value_counts().tolist()
+        x_axis = data.index.tolist()
+        
+        dic=[]
+        for i in range(len(x_axis)):
+            dic.append({"name":x_axis[i],"data":[y_axis[i]]})
+        
+        return dic
+    
     def boxplot(self,column_name):
         
         data= self.dataset[column_name].tolist()

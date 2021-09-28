@@ -1,0 +1,42 @@
+{
+    "chart": {
+        "type": "column"
+    },
+    "title": {
+        "text": "Stacked column chart"
+    },
+    "xAxis": {
+        "categories": []
+    },
+    "yAxis": {
+        "min": 0,
+        "title": {
+            "text": ""
+        },
+        "stackLabels": {
+            "enabled": true,
+            "style": {
+                "fontWeight": "bold"
+            }
+        }
+    },
+    "legend": {
+        "align": "right",
+        "x": -30,
+        "verticalAlign": "top",
+        "y": 25,
+        "floating": true,
+        "borderColor": "#CCC",
+        "borderWidth": 1,
+        "shadow": false
+    },
+    "plotOptions": {
+        "column": {
+            "stacking": "normal",
+            "dataLabels": {
+                "enabled": true
+            }
+        }
+    },
+    "series": []
+}
